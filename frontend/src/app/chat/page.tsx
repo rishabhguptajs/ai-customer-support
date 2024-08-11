@@ -13,6 +13,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore"
 import CodeBlock from "@/components/CodeBlocks";
+import { useRouter } from "next/navigation"
 
 const Chat: React.FC = () => {
   const { message, setMessage, responses, sendMessage, loading } = useChatbot()
@@ -20,6 +21,7 @@ const Chat: React.FC = () => {
   const [chats, setChats] = useState<any[]>([])
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false)
   const chatContainerRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user")
@@ -120,7 +122,7 @@ const Chat: React.FC = () => {
     auth.signOut().then(() => {
       setUser(null)
       localStorage.removeItem("user")
-      window.location.reload()
+      router.push('/')
     })
   }
 
