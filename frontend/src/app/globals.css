@@ -2,32 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: Arial, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.typing-dots {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background-color: #007bff; /* Adjust color as needed */
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
   }
 }
